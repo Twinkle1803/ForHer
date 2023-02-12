@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PeriodGuide</title>
+        <link rel="stylesheet" href="../periodguide/style.css">
+    </head>
+    <body>
+        
+        <h1>Period Tracker</h1>
+        <div >
+            <img  src="../assets/cycle.png" alt="cycle.png" class="center">
+        </div>
+        <p>Enter the first day of your last period: <input type="date" id="startDate"></p>
+        <p>Average length of your period (in days): <input type="number" id="periodLength"></p>
+        <button onclick="calculateNextPeriod()">Calculate Next Period</button>
+        <p id="nextPeriodDisplay"></p>
+        
+        <script>
+          function calculateNextPeriod() {
+            let startDate = new Date(document.getElementById("startDate").value);
+            let periodLength = document.getElementById("periodLength").value;
+            let nextPeriod = new Date(startDate.getTime());
+            nextPeriod.setDate(nextPeriod.getDate() + periodLength);
+            
+            document.getElementById("nextPeriodDisplay").innerHTML = "Your next period is expected on: " + nextPeriod.toDateString();
+          }
+        </script>
+
+    </body>
+</html>
